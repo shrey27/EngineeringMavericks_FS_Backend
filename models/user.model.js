@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
-const UserSchema = new mongoose.Schema({
+const VideoUserSchema = new mongoose.Schema({
   _id: String,
   firstName: String,
   lastName: String,
   email: String,
   password: String,
-  phone: Number,
-  signUpAddress: String,
-  wishlist: Array,
-  cart: Array,
-  address: Array,
-  orders: Array
+  likes: Array,
+  history: Array,
+  playlists: Array,
+  watchlater: Array
 });
-const User = mongoose.model('Users', UserSchema);
+const VideoUser = mongoose.model('videouser', VideoUserSchema);
 
-module.exports = { User };
+module.exports = { VideoUser };

@@ -9,26 +9,26 @@ app.use(express.urlencoded({ extended: true }));
 // support encoded bodies
 app.use(cors());
 
-const productsV1 = require('./routes/products.router.js');
+const videosV1 = require('./routes/videos.router.js');
 const { authRouter } = require('./routes/authentication.router.js');
-const wishlistV1 = require('./routes/wishlist.router.js');
-const cartv1 = require('./routes/cart.router.js');
-const addressv1 = require('./routes/address.router.js');
-const ordersv1 = require('./routes/orders.router.js');
+const historyv1 = require('./routes/history.router.js');
+const likev1 = require('./routes/like.router.js');
+const watchlaterv1 = require('./routes/watchlater.router.js');
+const playlistv1 = require("./routes/playlist.router.js");
 
 const { initializeDBConnection } = require('./db/db.connect.js');
 
-const PORT = 3010;
+const PORT = 3020;
 
 // called before any route handler
 initializeDBConnection();
 
-app.use('/v1/products', productsV1);
-app.use('/v1/wishlist', wishlistV1);
+app.use('/v1/videos', videosV1);
 app.use('/v1/auth', authRouter);
-app.use('/v1/cart', cartv1);
-app.use('/v1/address', addressv1);
-app.use('/v1/orders', ordersv1);
+app.use('/v1/history', historyv1);
+app.use('/v1/likes', likev1);
+app.use('/v1/watchlater', watchlaterv1);
+app.use('/v1/playlists', playlistv1);
 
 app.get('/', (req, res) => {
   res.json('Express Server has Started');
